@@ -3,17 +3,29 @@ import { useState,useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+// custom hook for Debouncing the filter to prevent useless api calls to backend
+//Remember state is persisted in the component where the custom hook is used not the in hook
+const useDebounced=(input,delay)=>{
+    const [debouncedInput,setDebouncedInput]=useState(input);
+    useEffect(()=>{
+        const timerId=setTimeout(()=>{
+            setDebouncedInput(input)
+        },delay);
+        return ()=>clearTimeout(timerId);
+    },[input,delay]);
+    return debouncedInput;
+}
 
 export const Users=()=>{
     const [users,setUsers]=useState([]);
     const [filter,setFilter]=useState("");
-
+    const debouncedFilter=useDebounced(filter,2500);
     useEffect(()=>{
-        axios.get("http://localhost:3000/api/v1/user/bulk?filter="+filter).then(
+        axios.get("http://localhost:3000/api/v1/user/bulk?filter="+debouncedFilter).then(
             response=>{
                 setUsers(response.data.user)
             })
-    },[filter]);
+    },[debouncedFilter]);
     return <>
     <div className="font-bold mt-6 text-lg">
         Users 

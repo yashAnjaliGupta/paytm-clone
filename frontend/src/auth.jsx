@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { createContext, useContext, useEffect, useState } from "react";
-
+// contextAPI does not make app performative but make syntax clear and prevent prop drilling
 const AuthContext = createContext();
 
 export const AuthProvider = ({children}) => {
