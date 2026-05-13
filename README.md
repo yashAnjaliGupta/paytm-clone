@@ -23,11 +23,8 @@ This project demonstrates a simple payment app flow with authentication, protect
   - Implemented auth state management using React Context, allowing login state and user data to be shared cleanly across components.
 - **Protected routing**
   - Added route guards so only authenticated users can access dashboard and money transfer pages.
-<<<<<<< HEAD
 - **Custom Hook**
   - Added custom hook UseDebouncing in filters reducing the backend calls
-=======
->>>>>>> 380b689a3b52a81e9ff756b3943a94deb1c61e8f
 
 ## Current UI/UX
 
@@ -42,10 +39,6 @@ This project demonstrates a simple payment app flow with authentication, protect
 - Prevent sending money to the **logged-in user** by filtering self name
 - Validate and format **amount decimals**
 - Add **logout** functionality to clear auth state
-<<<<<<< HEAD
-=======
-- Add **debouncing** in search/filter inputs
->>>>>>> 380b689a3b52a81e9ff756b3943a94deb1c61e8f
 
 ## Tech Stack
 
